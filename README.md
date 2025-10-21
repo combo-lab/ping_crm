@@ -1,11 +1,20 @@
 # PingCRM
 
-A project template using:
+A demo application to illustrate how [Inertia.js](https://inertiajs.com/) works with [Combo](https://github.com/combo-lab/combo) and [React](https://react.dev/).
+
+It's an enhanced port of the [pingcrm-react](https://github.com/liorocks/pingcrm-react), and it uses:
 
 - Elixir, Combo, Ecto, PostgreSQL.
 - TypeScript, Node.js, pnpm, Vite, Inertia, React, TailwindCSS.
 
 ## Quick start
+
+### Clone the repo
+
+```
+$ git clone https://github.com/combo-lab/ping_crm.git
+$ cd ping_crm
+```
 
 ### Setup environments
 
@@ -58,6 +67,13 @@ $ export NODE_ENV=production
 $ _build/prod/rel/ping_crm/bin/migrate
 $ _build/prod/rel/ping_crm/bin/serve
 ```
+
+## Credits
+
+- Original work by Jonathan Reinink ([@reinink](https://github.com/reinink)) and contributors
+- Port to Ruby on Rails by Georg Ledermann ([@ledermann](https://github.com/ledermann))
+- Port to React by Lio ([@liorocks](https://github.com/liorocks))
+- Port to Combo by Zeke Dou ([@zekedou](https://github.com/zekedou))
 
 ## License
 

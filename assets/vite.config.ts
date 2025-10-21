@@ -6,9 +6,9 @@ import tailwindcss from "@tailwindcss/vite"
 export default defineConfig({
   plugins: [
     combo({
-      input: ["src/js/app.tsx"],
+      input: ["src/app.tsx"],
       staticDir: "../priv/static",
-      ssrInput: ["src/js/ssr.tsx"],
+      ssrInput: ["src/ssr.tsx"],
       ssrOutDir: "../priv/ssr",
     }),
     react(),

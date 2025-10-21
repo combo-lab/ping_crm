@@ -19,7 +19,7 @@ defmodule PingCRM.Web do
     apply(__MODULE__, which, [])
   end
 
-  def static_paths, do: ~w(robots.txt favicon.ico build)
+  def static_paths, do: ~w(robots.txt favicon.ico favicon.svg build)
 
   def router do
     quote do
@@ -49,6 +49,8 @@ defmodule PingCRM.Web do
           to_form: 1,
           to_form: 2
         ]
+
+      import PingCRM.Web.Serializer, only: [serialize: 2]
 
       unquote(verified_routes())
     end
@@ -82,6 +84,12 @@ defmodule PingCRM.Web do
       alias PingCRM.Web.Layouts
 
       unquote(verified_routes())
+    end
+  end
+
+  def serializer do
+    quote do
+      use PingCRM.Web.Serializer
     end
   end
 

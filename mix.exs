@@ -40,12 +40,14 @@ defmodule PingCRM.MixProject do
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
       {:uuidv7, "~> 1.0"},
+      {:argon2_elixir, "~> 4.0"},
       {:combo, "~> 0.5"},
       {:combo_ecto, "~> 0.1"},
       {:combo_vite, "~> 0.7"},
-      {:combo_inertia, "~> 0.3"},
+      {:combo_inertia, "~> 0.4"},
       {:bandit, "~> 1.8"},
       {:jason, ">= 0.0.0"},
+      {:fake, "~> 0.1.0"},
       {:ex_check, ">= 0.0.0", only: [:dev], runtime: false},
       {:dialyxir, ">= 0.0.0", only: [:dev], runtime: false}
     ]

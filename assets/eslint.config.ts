@@ -12,9 +12,9 @@ export default defineConfig([
   {
     languageOptions: {
       globals: {
-        ...globals.browser
-      }
-    }
+        ...globals.browser,
+      },
+    },
   },
   {
     ...react.configs.flat.recommended,
@@ -22,25 +22,25 @@ export default defineConfig([
     rules: {
       "react/react-in-jsx-scope": "off",
       "react/prop-types": "off",
-      "react/no-unescaped-entities": "off"
+      "react/no-unescaped-entities": "off",
     },
     settings: {
       react: {
-        version: "detect"
-      }
-    }
+        version: "detect",
+      },
+    },
   },
   {
     plugins: {
-      "react-hooks": reactHooks
+      "react-hooks": reactHooks,
     },
     rules: {
       "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn"
-    }
+      "react-hooks/exhaustive-deps": "warn",
+    },
   },
   {
-    ignores: ["node_modules"]
+    ignores: ["node_modules"],
   },
-  prettier // Turn off all rules that might conflict with Prettier
+  prettier, // Turn off all rules that might conflict with Prettier
 ])

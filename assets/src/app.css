@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+
+@source ".";
+@source "../../lib/ping_crm/web";
+
+@theme {
+  --font-sans:
+    "Inter Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans--font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+@theme {
+  --color-indigo-100: #e6e8ff;
+  --color-indigo-300: #b2b7ff;
+  --color-indigo-400: #7886d7;
+  --color-indigo-500: #6574cd;
+  --color-indigo-600: #5661b3;
+  --color-indigo-800: #2f365f;
+  --color-indigo-900: #191e38;
+}
+
+/* button */
+
+.btn {
+  @apply rounded bg-indigo-600 px-6 py-3 text-sm leading-4 font-bold whitespace-nowrap text-white hover:bg-orange-400 focus:bg-orange-400;
+}
+
+.btn-spinner,
+.btn-spinner:after {
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.btn-spinner {
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 0.2em solid white;
+  border-right: 0.2em solid white;
+  border-bottom: 0.2em solid white;
+  border-left: 0.2em solid transparent;
+  transform: translateZ(0);
+  animation: spinning 1s infinite linear;
+}
+
+@keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

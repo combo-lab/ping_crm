@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" data-ssr={@inertia_ssr}>
+<html lang="en" data-ssr={@inertia_ssr} class="h-full bg-gray-100">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content={get_csrf_token()} />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <.inertia_title>
       {if title = assigns[:page_title], do: "#{title} - PingCRM", else: "PingCRM"}
     </.inertia_title>
     <.inertia_head content={@inertia_head} />
     <.vite_react_refresh />
-    <.vite_assets names={["src/js/app.tsx"]} />
+    <.vite_assets names={["src/app.tsx"]} />
   </head>
-  <body class="font-sans antialiased">
+  <body class="font-sans antialiased leading-none text-gray-700">
     {@inner_content}
   </body>
 </html>
