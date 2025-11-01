@@ -7,6 +7,13 @@ It's an enhanced port of the [pingcrm-react](https://github.com/liorocks/pingcrm
 - Elixir, Combo, Ecto, PostgreSQL.
 - TypeScript, Node.js, pnpm, Vite, Inertia, React, TailwindCSS.
 
+## Highlights
+
+The type-safe communication protocol between backend and frontend:
+
+- backend - the serializer module at [`lib/ping_crm/web/serializer.ex`](lib/ping_crm/web/serializer.ex) and all the implementations at [`lib/ping_crm/web/serializers`](lib/ping_crm/web/serializers).
+- frontend - the TypeScript types at [`assets/src/types/index.d.ts`](assets/src/types/index.d.ts)
+
 ## Quick start
 
 ### Clone the repo
