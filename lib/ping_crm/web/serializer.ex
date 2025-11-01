@@ -1,11 +1,13 @@
 defmodule PingCRM.Web.Serializer do
   @moduledoc """
+  Provides a behaviour for serializing data into maps or lists, with support
+  for format variants and association handling.
 
   ## Usage
 
   Support that we have an Ecto schema:
 
-      defmodule MyApp.Core.Post do
+      defmodule PingCRM.Core.Post do
         use Ecto.Schema
 
         schema "posts" do
@@ -17,9 +19,9 @@ defmodule PingCRM.Web.Serializer do
 
   Before serializing it, let's define a serializer module first:
 
-      defmodule MyApp.Web.PostJSON do
-        use MyApp.Web.Serializer
-        alias MyApp.Core.Post
+      defmodule PingCRM.Web.PostJSON do
+        use PingCRM.Web.Serializer
+        alias PingCRM.Core.Post
 
         @impl true
         def serialize(%Post{} = post) do
@@ -41,8 +43,8 @@ defmodule PingCRM.Web.Serializer do
 
   To serialize a post:
 
-      alias MyApp.Web.Serializer
-      alias MyApp.Web.PostJSON
+      alias PingCRM.Web.Serializer
+      alias PingCRM.Web.PostJSON
 
       Serializer.serialize(post, PostJSON)
       Serializer.serialize(post, {PostJSON, :compact})
@@ -71,7 +73,7 @@ defmodule PingCRM.Web.Serializer do
   ## Examples
 
      iex> alias PingCRM.Web.Serializer
-     iex> Serializer.serialize(post, {PostJSON})
+     iex> Serializer.serialize(post, PostJSON)
      iex> Serializer.serialize(post, {PostJSON, :compact})
 
   """
@@ -93,6 +95,17 @@ defmodule PingCRM.Web.Serializer do
     mod.serialize(data, format)
   end
 
+  @doc """
+  Wraps an Ecto association into `%{loaded: boolean(), data: serialized() | nil}`
+  format.
+
+  It helps distinguish between three states:
+
+    * not loaded
+    * loaded but empty
+    * loaded with data
+
+  """
   def wrap_assoc(%Ecto.Association.NotLoaded{}, _serializer) do
     %{loaded: false, data: nil}
   end
