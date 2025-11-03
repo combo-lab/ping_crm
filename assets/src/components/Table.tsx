@@ -46,7 +46,7 @@ export default function Table<T>({ columns = [], rows = [], getRowDetailsUrl }: 
                     <td key={column.name} className="border-t border-gray-200">
                       <Link
                         tabIndex={-1}
-                        href={getRowDetailsUrl?.(row) as string}
+                        href={getRowDetailsUrl?.(row)}
                         className="focus:text-indigo flex items-center px-6 py-4 focus:outline-none"
                       >
                         {column.renderCell?.(row) ?? get(row, column.name) ?? "N/A"}
@@ -56,7 +56,7 @@ export default function Table<T>({ columns = [], rows = [], getRowDetailsUrl }: 
                 })}
                 <td className="w-px border-t border-gray-200">
                   <Link
-                    href={getRowDetailsUrl?.(row)!}
+                    href={getRowDetailsUrl?.(row)}
                     className="flex items-center px-4 focus:outline-none"
                   >
                     <ChevronRight size={24} className="text-gray-400" />

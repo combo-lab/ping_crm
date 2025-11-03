@@ -55,7 +55,7 @@ export default function SearchBar({ filters = [] }: SearchBarProps) {
         preserveState: true,
       })
     }
-  }, [values])
+  }, [prevValues, values, url])
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const name = e.target.name

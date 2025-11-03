@@ -1,17 +1,26 @@
 import { PageProps } from "@/types"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { usePage } from "@inertiajs/react"
 import Alert from "@/components/Alert"
 
-export default function FlashedMessages() {
-  const [visible, setVisible] = useState(true)
+export default function FlashMessages() {
   const { flash, errors } = usePage<PageProps>().props
   const formErrors = Object.keys(errors).length
 
-  useEffect(() => {
+  const [visible, setVisible] = useState(true)
+  const [prevFlash, setPrevFlash] = useState(flash)
+  const [prevErrors, setPrevErrors] = useState(errors)
+
+  if (flash !== prevFlash) {
+    setPrevFlash(flash)
     setVisible(true)
-  }, [flash, errors])
+  }
+
+  if (errors !== prevErrors) {
+    setPrevErrors(errors)
+    setVisible(true)
+  }
 
   return (
     <>
