@@ -5,6 +5,7 @@ import "./app.css"
 
 import axios from "axios"
 import { createInertiaApp } from "@inertiajs/react"
+import { StrictMode } from "react"
 import { createRoot, hydrateRoot } from "react-dom/client"
 import { resolvePageComponent } from "./inertia-helper"
 
@@ -28,7 +29,11 @@ createInertiaApp({
     if (ssr_mode()) {
       hydrateRoot(el, <App {...props} />)
     } else {
-      createRoot(el).render(<App {...props} />)
+      createRoot(el).render(
+        <StrictMode>
+          <App {...props} />
+        </StrictMode>,
+      )
     }
   },
 })

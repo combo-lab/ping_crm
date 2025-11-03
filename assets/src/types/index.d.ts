@@ -1,4 +1,4 @@
-import { LoadedAssoc, NotLoadedAssoc } from "./association"
+import { LoadedAssoc } from "./association"
 
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
   auth: {
