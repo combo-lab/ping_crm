@@ -1,6 +1,4 @@
 defmodule PingCRM.Core.SoftDeletion do
-  @moduledoc false
-
   import Ecto.Query
 
   @spec change_to_active(Ecto.Schema.t()) :: Ecto.Changeset.t()
