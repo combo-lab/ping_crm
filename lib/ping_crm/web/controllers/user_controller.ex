@@ -31,9 +31,17 @@ defmodule PingCRM.Web.UserController do
 
   def create(conn, params) do
     current_account = conn.assigns.current_account
+    {photo, params} = Map.pop(params, "photo")
 
     case Accounts.create_user(current_account, params) do
-      {:ok, _user} ->
+      {:ok, user} ->
+        if photo do
+          {:ok, _} =
+            Accounts.update_user(user, %{
+              "photo" => Accounts.store_user_photo!(user, photo)
+            })
+        end
+
         conn
         |> put_flash(:success, "User created.")
         |> redirect(to: ~p"/users")
@@ -57,9 +65,17 @@ defmodule PingCRM.Web.UserController do
   def update(conn, %{"id" => id} = params) do
     current_account = conn.assigns.current_account
     user = Accounts.get_user!(current_account, id)
+    {photo, params} = Map.pop(params, "photo")
 
     case Accounts.update_user(user, params) do
-      {:ok, _user} ->
+      {:ok, user} ->
+        if photo do
+          {:ok, _} =
+            Accounts.update_user(user, %{
+              "photo" => Accounts.store_user_photo!(user, photo)
+            })
+        end
+
         conn
         |> put_flash(:success, "User updated.")
         |> redirect(to: ~p"/users/#{user}/edit")

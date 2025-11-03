@@ -34,3 +34,6 @@ ping_crm-*.tar
 
 # Ignore files that are produced for SSR by assets build tools.
 /priv/ssr/
+
+# Ignore uploaded files
+/priv/static/uploads/

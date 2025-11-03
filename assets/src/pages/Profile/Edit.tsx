@@ -5,7 +5,7 @@ import MainLayout from "@/layouts/MainLayout"
 import FieldGroup from "@/components/form/FieldGroup"
 import TextInput from "@/components/form/TextInput"
 import SelectInput from "@/components/form/SelectInput"
-import FileInput from "@/components/form/FileInput"
+import ImageInput from "@/components/form/ImageInput"
 import LoadingButton from "@/components/button/LoadingButton"
 
 interface EditProps {
@@ -16,13 +16,13 @@ const title = "Profile"
 
 function Edit({ user }: EditProps) {
   const form = useForm({
+    _method: "put",
     first_name: user.first_name || "",
     last_name: user.last_name || "",
     email: user.email || "",
     password: "",
     role: user.role,
-    photo: user.photo || "",
-    _method: "put",
+    photo: null as File | null,
   })
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -34,7 +34,6 @@ function Edit({ user }: EditProps) {
     <>
       <div className="mb-8 flex max-w-lg justify-start">
         <h1 className="text-3xl font-bold">{title}</h1>
-        {user.photo && <img className="ml-4 block h-8 w-8 rounded-full" src={user.photo} />}
       </div>
       <div className="max-w-3xl overflow-hidden rounded bg-white shadow">
         <form onSubmit={handleSubmit}>
@@ -91,13 +90,12 @@ function Edit({ user }: EditProps) {
             </FieldGroup>
 
             <FieldGroup label="Photo" name="photo" error={form.errors.photo}>
-              <FileInput
+              <ImageInput
                 name="photo"
-                accept="image/*"
                 error={form.errors.photo}
-                value={form.data.photo}
-                onChange={(photo) => {
-                  form.setData("photo", photo as unknown as string)
+                value={""}
+                onChange={(file) => {
+                  form.setData("photo", file)
                 }}
               />
             </FieldGroup>

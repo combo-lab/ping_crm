@@ -2,7 +2,7 @@
 
 A demo application to illustrate how [Inertia.js](https://inertiajs.com/) works with [Combo](https://github.com/combo-lab/combo) and [React](https://react.dev/).
 
-It's an enhanced port of the [pingcrm-react](https://github.com/liorocks/pingcrm-react), and it uses:
+It's a slightly-enhanced port of the [pingcrm-react](https://github.com/liorocks/pingcrm-react), and it uses:
 
 - Elixir, Combo, Ecto, PostgreSQL.
 - TypeScript, Node.js, pnpm, Vite, Inertia, React, TailwindCSS.

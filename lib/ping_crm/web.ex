@@ -19,7 +19,7 @@ defmodule PingCRM.Web do
     apply(__MODULE__, which, [])
   end
 
-  def static_paths, do: ~w(robots.txt favicon.ico favicon.svg build)
+  def static_paths, do: ~w(robots.txt favicon.ico favicon.svg build uploads)
 
   def router do
     quote do

@@ -1,6 +1,7 @@
 defmodule PingCRM.Web.UserJSON do
   use PingCRM.Web, :serializer
 
+  alias PingCRM.Core.Accounts
   alias PingCRM.Core.Accounts.User
   alias PingCRM.Web.AccountJSON
 
@@ -21,7 +22,7 @@ defmodule PingCRM.Web.UserJSON do
       full_name: User.full_name(user),
       email: user.email,
       role: user.role,
-      photo: user.photo,
+      photo: Accounts.fetch_user_photo_url!(user.photo),
       deleted_at: user.deleted_at
     }
   end
@@ -34,7 +35,7 @@ defmodule PingCRM.Web.UserJSON do
       full_name: User.full_name(user),
       email: user.email,
       role: user.role,
-      photo: user.photo,
+      photo: Accounts.fetch_user_photo_url!(user.photo),
       deleted_at: user.deleted_at
     }
   end

@@ -3,7 +3,7 @@ import MainLayout from "@/layouts/MainLayout"
 import FieldGroup from "@/components/form/FieldGroup"
 import TextInput from "@/components/form/TextInput"
 import SelectInput from "@/components/form/SelectInput"
-import FileInput from "@/components/form/FileInput"
+import ImageInput from "@/components/form/ImageInput"
 import LoadingButton from "@/components/button/LoadingButton"
 
 function New() {
@@ -13,7 +13,7 @@ function New() {
     email: "",
     password: "",
     role: "user",
-    photo: "",
+    photo: null as File | null,
   })
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -86,12 +86,11 @@ function New() {
             </FieldGroup>
 
             <FieldGroup label="Photo" name="photo" error={form.errors.photo}>
-              <FileInput
+              <ImageInput
                 name="photo"
-                accept="image/*"
                 error={form.errors.photo}
-                value={form.data.photo}
-                onChange={(photo) => form.setData("photo", photo as unknown as string)}
+                value={""}
+                onChange={(file) => form.setData("photo", file)}
               />
             </FieldGroup>
           </div>

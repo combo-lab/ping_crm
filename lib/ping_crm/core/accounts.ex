@@ -3,6 +3,7 @@ defmodule PingCRM.Core.Accounts do
   alias PingCRM.Core.Accounts.Account
   alias PingCRM.Core.Accounts.UserAuth
   alias PingCRM.Core.Accounts.Users
+  alias PingCRM.Core.Accounts.UserPhotos
   alias PingCRM.Core.Accounts.UserSessionTokens
   alias PingCRM.Core.Accounts.UserSessionToken
 
@@ -26,6 +27,9 @@ defmodule PingCRM.Core.Accounts do
   defdelegate delete_user(user), to: Users
   defdelegate restore_user(user), to: Users
   defdelegate demo_user?(user), to: Users
+
+  defdelegate store_user_photo!(user, plug_upload), to: UserPhotos, as: :store!
+  defdelegate fetch_user_photo_url!(photo), to: UserPhotos, as: :fetch_url!
 
   def user_session_token_ttl_in_minutes, do: UserSessionToken.ttl_in_minutes()
   def user_session_token_ttl_in_seconds, do: UserSessionToken.ttl_in_seconds()
