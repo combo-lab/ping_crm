@@ -9,10 +9,16 @@ It's a slightly-enhanced port of the [pingcrm-react](https://github.com/liorocks
 
 ## Highlights
 
-The type-safe communication protocol between backend and frontend:
+### Type-safe communication protocol
+
+The protocol between backend and frontend is defined by:
 
 - backend - the serializer module at [`lib/ping_crm/web/serializer.ex`](lib/ping_crm/web/serializer.ex) and all the implementations at [`lib/ping_crm/web/serializers`](lib/ping_crm/web/serializers).
 - frontend - the TypeScript types at [`assets/src/types/index.d.ts`](assets/src/types/index.d.ts)
+
+### SSR support
+
+It's enabled only for `prod` env.
 
 ## Quick start
 
