@@ -25,7 +25,7 @@ defmodule PingCRM.Web.Supervisor do
 
     if ssr? do
       path = Path.join([Application.app_dir(:ping_crm), "priv/ssr"])
-      [{Combo.Inertia.SSR, path: path}]
+      [{Combo.Inertia.SSR, endpoint: PingCRM.Web.Endpoint, path: path}]
     else
       []
     end
