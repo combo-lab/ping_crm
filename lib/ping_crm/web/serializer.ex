@@ -1,7 +1,7 @@
 defmodule PingCRM.Web.Serializer do
   @moduledoc """
   Provides a behaviour for serializing data into maps or lists, with support
-  for format variants and association handling.
+  for variants and association handling.
 
   ## Usage
 
@@ -51,13 +51,13 @@ defmodule PingCRM.Web.Serializer do
 
   """
 
-  @type format :: atom()
-  @type serializer :: module() | {module(), format()}
+  @type variant :: atom()
+  @type serializer :: module() | {module(), variant()}
   @type serializable :: any()
   @type serialized :: any()
 
   @callback serialize(serializable()) :: serialized()
-  @callback serialize(serializable(), format()) :: serialized()
+  @callback serialize(serializable(), variant()) :: serialized()
   @optional_callbacks [serialize: 1, serialize: 2]
 
   defmacro __using__(_) do
@@ -68,7 +68,7 @@ defmodule PingCRM.Web.Serializer do
   end
 
   @doc """
-  Serializes data with given serializer and format.
+  Serializes data with given serializer and variant.
 
   ## Examples
 
@@ -82,8 +82,8 @@ defmodule PingCRM.Web.Serializer do
     for data <- list, do: mod.serialize(data)
   end
 
-  def serialize(list, {mod, format}) when is_list(list) and is_atom(mod) and is_atom(format) do
-    for data <- list, do: mod.serialize(data, format)
+  def serialize(list, {mod, variant}) when is_list(list) and is_atom(mod) and is_atom(variant) do
+    for data <- list, do: mod.serialize(data, variant)
   end
 
   @spec serialize(serializable(), serializer()) :: serialized()
@@ -91,8 +91,8 @@ defmodule PingCRM.Web.Serializer do
     mod.serialize(data)
   end
 
-  def serialize(data, {mod, format}) when is_atom(mod) and is_atom(format) do
-    mod.serialize(data, format)
+  def serialize(data, {mod, variant}) when is_atom(mod) and is_atom(variant) do
+    mod.serialize(data, variant)
   end
 
   @doc """
