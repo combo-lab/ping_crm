@@ -4,12 +4,12 @@ import BottomHeader from "@/components/header/BottomHeader"
 import MainMenu from "@/components/menu/MainMenu"
 import FlashMessages from "@/components/message/FlashMessages"
 
-interface MainLayoutProps {
+interface Props {
   title?: string
   children: React.ReactNode
 }
 
-export default function MainLayout({ title, children }: MainLayoutProps) {
+export default function MainLayout({ title, children }: Props) {
   return (
     <>
       <Head title={title} />

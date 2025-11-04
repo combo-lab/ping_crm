@@ -12,11 +12,11 @@ import pickBy from "lodash/pickBy"
 
 type Filter = "role" | "status"
 
-interface SearchBarProps {
+interface Props {
   filters: Filter[]
 }
 
-export default function SearchBar({ filters = [] }: SearchBarProps) {
+export default function SearchBar({ filters = [] }: Props) {
   const page = usePage<
     PageProps & {
       filters: { search?: string; role?: string; status?: string }

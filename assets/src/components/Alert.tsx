@@ -1,7 +1,7 @@
 import { Info, Check, CircleX, TriangleAlert } from "lucide-react"
 import CloseButton from "@/components/button/CloseButton"
 
-interface Alert {
+interface Props {
   message: string
   icon?: React.ReactNode
   action?: React.ReactNode
@@ -9,7 +9,7 @@ interface Alert {
   variant?: "info" | "success" | "error" | "warning"
 }
 
-export default function Alert({ icon, action, message, variant, onClose }: Alert) {
+export default function Alert({ icon, action, message, variant, onClose }: Props) {
   const color = {
     info: "blue",
     success: "green",

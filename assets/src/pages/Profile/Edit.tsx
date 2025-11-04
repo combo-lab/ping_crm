@@ -8,13 +8,13 @@ import SelectInput from "@/components/form/SelectInput"
 import ImageInput from "@/components/form/ImageInput"
 import LoadingButton from "@/components/button/LoadingButton"
 
-interface EditProps {
+interface Props {
   user: UserEdit
 }
 
 const title = "Profile"
 
-function Edit({ user }: EditProps) {
+function Edit({ user }: Props) {
   const form = useForm({
     _method: "put",
     first_name: user.first_name || "",

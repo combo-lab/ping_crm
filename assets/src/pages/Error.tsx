@@ -1,10 +1,10 @@
 import { Head } from "@inertiajs/react"
 
-interface ErrorProps {
+interface Props {
   status: number
 }
 
-export default function Error({ status }: ErrorProps) {
+export default function Error({ status }: Props) {
   const title = {
     503: "503: Service Unavailable",
     500: "500: Server Error",

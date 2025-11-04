@@ -7,12 +7,12 @@ import Table from "@/components/Table"
 import Pagination from "@/components/Pagination"
 import { Trash2 } from "lucide-react"
 
-interface IndexProps {
+interface Props {
   users: UserCompact[]
   pagination_meta: PaginationMeta
 }
 
-function Index({ users, pagination_meta }: IndexProps) {
+function Index({ users, pagination_meta }: Props) {
   return (
     <div>
       <h1 className="mb-8 text-3xl font-bold">Users</h1>

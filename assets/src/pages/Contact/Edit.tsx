@@ -9,12 +9,12 @@ import LoadingButton from "@/components/button/LoadingButton"
 import DeleteButton from "@/components/button/DeleteButton"
 import TrashedMessage from "@/components/message/TrashedMessage"
 
-interface EditProps {
+interface Props {
   contact: ContactEdit
   org_names: OrgName[]
 }
 
-function Edit({ contact, org_names }: EditProps) {
+function Edit({ contact, org_names }: Props) {
   const form = useForm({
     first_name: contact.first_name || "",
     last_name: contact.last_name || "",

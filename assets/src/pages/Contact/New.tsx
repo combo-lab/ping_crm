@@ -7,11 +7,11 @@ import TextInput from "@/components/form/TextInput"
 import SelectInput from "@/components/form/SelectInput"
 import LoadingButton from "@/components/button/LoadingButton"
 
-interface NewProps {
+interface Props {
   org_names: OrgName[]
 }
 
-function New({ org_names }: NewProps) {
+function New({ org_names }: Props) {
   const form = useForm({
     first_name: "",
     last_name: "",

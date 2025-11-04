@@ -1,15 +1,10 @@
 import { cn } from "@/lib/utils"
 
-interface LoadingButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading: boolean
 }
 
-export default function LoadingButton({
-  loading,
-  className,
-  children,
-  ...props
-}: LoadingButtonProps) {
+export default function LoadingButton({ loading, className, children, ...props }: Props) {
   className = cn(
     "flex items-center",
     "focus:outline-none",

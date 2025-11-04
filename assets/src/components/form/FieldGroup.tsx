@@ -1,4 +1,4 @@
-interface FieldGroupProps {
+interface Props {
   className?: string
   name?: string
   label?: string
@@ -6,7 +6,7 @@ interface FieldGroupProps {
   children: React.ReactNode
 }
 
-export default function FieldGroup({ className, label, name, error, children }: FieldGroupProps) {
+export default function FieldGroup({ className, label, name, error, children }: Props) {
   return (
     <div className={className}>
       {label && (

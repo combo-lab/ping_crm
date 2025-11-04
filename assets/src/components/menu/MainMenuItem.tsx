@@ -2,13 +2,13 @@ import { Link, usePage } from "@inertiajs/react"
 import { startsWithPath } from "@/lib/route"
 import { cn } from "@/lib/utils"
 
-interface MainMenuItemProps {
+interface Props {
   icon: React.ReactNode
   link: string
   text: string
 }
 
-export default function MainMenuItem({ icon, link, text }: MainMenuItemProps) {
+export default function MainMenuItem({ icon, link, text }: Props) {
   const { url } = usePage()
   const isActive = startsWithPath(url, link)
 

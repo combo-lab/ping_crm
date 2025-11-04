@@ -10,11 +10,11 @@ import LoadingButton from "@/components/button/LoadingButton"
 import DeleteButton from "@/components/button/DeleteButton"
 import TrashedMessage from "@/components/message/TrashedMessage"
 
-interface EditProps {
+interface Props {
   org: OrgEdit
 }
 
-function Edit({ org }: EditProps) {
+function Edit({ org }: Props) {
   const form = useForm({
     name: org.name || "",
     email: org.email || "",

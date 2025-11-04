@@ -7,12 +7,12 @@ import Table from "@/components/Table"
 import Pagination from "@/components/Pagination"
 import { Trash2 } from "lucide-react"
 
-interface IndexProps {
+interface Props {
   contacts: ContactCompact[]
   pagination_meta: PaginationMeta
 }
 
-function Index({ contacts, pagination_meta }: IndexProps) {
+function Index({ contacts, pagination_meta }: Props) {
   return (
     <div>
       <h1 className="mb-8 text-3xl font-bold">Contacts</h1>

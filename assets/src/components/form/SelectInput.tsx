@@ -1,18 +1,12 @@
 import { ComponentProps } from "react"
 import { cn } from "@/lib/utils"
 
-interface SelectInputProps extends ComponentProps<"select"> {
+interface Props extends ComponentProps<"select"> {
   error?: string
   options: { value: string; label: string }[]
 }
 
-export default function SelectInput({
-  name,
-  className,
-  error,
-  options = [],
-  ...props
-}: SelectInputProps) {
+export default function SelectInput({ name, className, error, options = [], ...props }: Props) {
   className = cn(
     "w-full form-select rounded border-gray-200 focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400 focus:outline-none",
     { "border-red-400 focus:border-red-400 focus:ring-red-400": error },

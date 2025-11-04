@@ -1,11 +1,11 @@
 import { ComponentProps } from "react"
 import { cn } from "@/lib/utils"
 
-interface TextInputProps extends ComponentProps<"input"> {
+interface Props extends ComponentProps<"input"> {
   error?: string
 }
 
-export default function TextInput({ name, className, error, ...props }: TextInputProps) {
+export default function TextInput({ name, className, error, ...props }: Props) {
   className = cn(
     "form-input w-full rounded border-gray-200 focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400 focus:outline-none",
     {

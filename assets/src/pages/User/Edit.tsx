@@ -10,11 +10,11 @@ import TrashedMessage from "@/components/message/TrashedMessage"
 import LoadingButton from "@/components/button/LoadingButton"
 import DeleteButton from "@/components/button/DeleteButton"
 
-interface EditProps {
+interface Props {
   user: UserEdit
 }
 
-function Edit({ user }: EditProps) {
+function Edit({ user }: Props) {
   const form = useForm({
     _method: "put",
     first_name: user.first_name || "",

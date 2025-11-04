@@ -1,12 +1,12 @@
 import { Trash2 } from "lucide-react"
 import Alert from "@/components/Alert"
 
-interface TrashedMessageProps {
+interface Props {
   message: string
   onRestore: () => void
 }
 
-export default function TrashedMessage({ message, onRestore }: TrashedMessageProps) {
+export default function TrashedMessage({ message, onRestore }: Props) {
   return (
     <Alert
       variant="warning"

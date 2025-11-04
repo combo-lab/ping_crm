@@ -2,7 +2,7 @@ import { Link } from "@inertiajs/react"
 import { ChevronRight } from "lucide-react"
 import get from "lodash/get"
 
-interface TableProps<T> {
+interface Props<T> {
   columns: {
     label: string
     name: string
@@ -13,7 +13,7 @@ interface TableProps<T> {
   getRowDetailsUrl?: (row: T) => string
 }
 
-export default function Table<T>({ columns = [], rows = [], getRowDetailsUrl }: TableProps<T>) {
+export default function Table<T>({ columns = [], rows = [], getRowDetailsUrl }: Props<T>) {
   return (
     <div className="overflow-x-auto rounded bg-white shadow">
       <table className="w-full whitespace-nowrap">
