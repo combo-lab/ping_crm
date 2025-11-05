@@ -19,12 +19,12 @@ defmodule PingCRM.Web.ProfileController do
       {:ok, _user} ->
         conn
         |> put_flash(:success, "Profile updated.")
-        |> redirect(to: ~p"/profile")
+        |> redirect_back()
 
       {:error, changeset} ->
         conn
         |> inertia_put_errors(changeset)
-        |> redirect(to: ~p"/profile")
+        |> redirect_back()
     end
   end
 end

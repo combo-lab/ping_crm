@@ -38,7 +38,7 @@ defmodule PingCRM.Web.OrgController do
       {:error, changeset} ->
         conn
         |> inertia_put_errors(changeset)
-        |> redirect(to: ~p"/orgs/new")
+        |> redirect_back()
     end
   end
 
@@ -59,12 +59,12 @@ defmodule PingCRM.Web.OrgController do
       {:ok, _org} ->
         conn
         |> put_flash(:success, "Organization updated.")
-        |> redirect(to: ~p"/orgs/#{org}/edit")
+        |> redirect_back()
 
       {:error, changeset} ->
         conn
         |> inertia_put_errors(changeset)
-        |> redirect(to: ~p"/orgs/#{org}/edit")
+        |> redirect_back()
     end
   end
 
@@ -73,15 +73,15 @@ defmodule PingCRM.Web.OrgController do
     org = CRM.get_org!(current_account, id)
 
     case CRM.delete_org(org) do
-      {:ok, org} ->
+      {:ok, _org} ->
         conn
         |> put_flash(:success, "Organization deleted.")
-        |> redirect(to: ~p"/orgs/#{org}/edit")
+        |> redirect_back()
 
       {:error, _} ->
         conn
         |> put_flash(:success, "Failed to delete organization.")
-        |> redirect(to: ~p"/orgs/#{org}/edit")
+        |> redirect_back()
     end
   end
 
@@ -90,15 +90,15 @@ defmodule PingCRM.Web.OrgController do
     org = CRM.get_org!(current_account, id)
 
     case CRM.restore_org(org) do
-      {:ok, org} ->
+      {:ok, _org} ->
         conn
         |> put_flash(:success, "Organization restored.")
-        |> redirect(to: ~p"/orgs/#{org}/edit")
+        |> redirect_back()
 
       {:error, _} ->
         conn
         |> put_flash(:success, "Failed to restore organization.")
-        |> redirect(to: ~p"/orgs/#{org}/edit")
+        |> redirect_back()
     end
   end
 end

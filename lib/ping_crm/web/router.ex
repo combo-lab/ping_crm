@@ -8,6 +8,7 @@ defmodule PingCRM.Web.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
+    plug :put_previous_url
     plug :put_layout, html: {PingCRM.Web.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers

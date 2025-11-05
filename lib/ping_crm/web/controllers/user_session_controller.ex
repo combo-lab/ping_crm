@@ -17,7 +17,7 @@ defmodule PingCRM.Web.UserSessionController do
       |> inertia_put_errors(%{
         credentials: "Incorrect email or password."
       })
-      |> redirect(to: ~p"/login")
+      |> redirect_back()
     end
   end
 

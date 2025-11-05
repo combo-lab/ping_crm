@@ -41,7 +41,7 @@ defmodule PingCRM.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:uuidv7, "~> 1.0"},
       {:argon2_elixir, "~> 4.0"},
-      {:combo, "~> 0.5"},
+      {:combo, "~> 0.6"},
       {:combo_ecto, "~> 0.1"},
       {:combo_vite, "~> 0.7"},
       {:combo_inertia, "~> 0.4"},

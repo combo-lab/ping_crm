@@ -49,7 +49,7 @@ defmodule PingCRM.Web.UserController do
       {:error, changeset} ->
         conn
         |> inertia_put_errors(changeset)
-        |> redirect(to: ~p"/users/new")
+        |> redirect_back()
     end
   end
 
@@ -78,12 +78,12 @@ defmodule PingCRM.Web.UserController do
 
         conn
         |> put_flash(:success, "User updated.")
-        |> redirect(to: ~p"/users/#{user}/edit")
+        |> redirect_back()
 
       {:error, changeset} ->
         conn
         |> inertia_put_errors(changeset)
-        |> redirect(to: ~p"/users/#{user}/edit")
+        |> redirect_back()
     end
   end
 
@@ -92,15 +92,15 @@ defmodule PingCRM.Web.UserController do
     user = Accounts.get_user!(current_account, id)
 
     case Accounts.delete_user(user) do
-      {:ok, user} ->
+      {:ok, _user} ->
         conn
         |> put_flash(:success, "User deleted.")
-        |> redirect(to: ~p"/users/#{user}/edit")
+        |> redirect_back()
 
       {:error, _} ->
         conn
         |> put_flash(:success, "Failed to delete user.")
-        |> redirect(to: ~p"/users/#{user}/edit")
+        |> redirect_back()
     end
   end
 
@@ -109,15 +109,15 @@ defmodule PingCRM.Web.UserController do
     user = Accounts.get_user!(current_account, id)
 
     case Accounts.restore_user(user) do
-      {:ok, user} ->
+      {:ok, _user} ->
         conn
         |> put_flash(:success, "User restored.")
-        |> redirect(to: ~p"/users/#{user}/edit")
+        |> redirect_back()
 
       {:error, _} ->
         conn
         |> put_flash(:success, "Failed to restore user.")
-        |> redirect(to: ~p"/users/#{user}/edit")
+        |> redirect_back()
     end
   end
 end

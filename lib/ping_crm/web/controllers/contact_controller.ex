@@ -48,7 +48,7 @@ defmodule PingCRM.Web.ContactController do
       {:error, changeset} ->
         conn
         |> inertia_put_errors(changeset)
-        |> redirect(to: ~p"/contacts/new")
+        |> redirect_back()
     end
   end
 
@@ -71,12 +71,12 @@ defmodule PingCRM.Web.ContactController do
       {:ok, _contact} ->
         conn
         |> put_flash(:success, "Contact updated.")
-        |> redirect(to: ~p"/contacts/#{contact}/edit")
+        |> redirect_back()
 
       {:error, changeset} ->
         conn
         |> inertia_put_errors(changeset)
-        |> redirect(to: ~p"/contacts/#{contact}/edit")
+        |> redirect_back()
     end
   end
 
@@ -85,15 +85,15 @@ defmodule PingCRM.Web.ContactController do
     contact = CRM.get_contact!(current_account, id)
 
     case CRM.delete_contact(contact) do
-      {:ok, contact} ->
+      {:ok, _contact} ->
         conn
         |> put_flash(:success, "Contact deleted.")
-        |> redirect(to: ~p"/contacts/#{contact}/edit")
+        |> redirect_back()
 
       {:error, _} ->
         conn
         |> put_flash(:success, "Failed to delete contact.")
-        |> redirect(to: ~p"/contacts/#{contact}/edit")
+        |> redirect_back()
     end
   end
 
@@ -102,15 +102,15 @@ defmodule PingCRM.Web.ContactController do
     contact = CRM.get_contact!(current_account, id)
 
     case CRM.restore_contact(contact) do
-      {:ok, contact} ->
+      {:ok, _contact} ->
         conn
         |> put_flash(:success, "Contact restored.")
-        |> redirect(to: ~p"/contacts/#{contact}/edit")
+        |> redirect_back()
 
       {:error, _} ->
         conn
         |> put_flash(:success, "Failed to restore contact.")
-        |> redirect(to: ~p"/contacts/#{contact}/edit")
+        |> redirect_back()
     end
   end
 end
