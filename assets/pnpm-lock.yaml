@@ -9,28 +9,28 @@ importers:
   .:
     dependencies:
       '@fontsource-variable/inter':
-        specifier: ^5.2.8
+        specifier: ^5.2.0
         version: 5.2.8
       '@inertiajs/core':
-        specifier: ^2.2.8
+        specifier: ^2.2.0
         version: 2.2.8
       '@inertiajs/react':
-        specifier: ^2.2.8
+        specifier: ^2.2.0
         version: 2.2.8(react@19.2.0)
       axios:
         specifier: '*'
         version: 1.12.2
       class-variance-authority:
-        specifier: ^0.7.1
+        specifier: ^0.7.0
         version: 0.7.1
       clsx:
-        specifier: ^2.1.1
+        specifier: ^2.1.0
         version: 2.1.1
       combo:
         specifier: file:../deps/combo/node-packages/combo
         version: file:../deps/combo/node-packages/combo
       lodash:
-        specifier: ^4.17.20
+        specifier: ^4.17.0
         version: 4.17.21
       lucide-react:
         specifier: ^0.546.0
@@ -45,7 +45,7 @@ importers:
         specifier: ^17.6.0
         version: 17.6.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       tailwind-merge:
-        specifier: ^3.0.1
+        specifier: ^3.0.0
         version: 3.3.1
     devDependencies:
       '@eslint/js':
@@ -61,7 +61,7 @@ importers:
         specifier: ^4.17.20
         version: 4.17.20
       '@types/node':
-        specifier: ^22.13.5
+        specifier: ^22.13.0
         version: 22.18.11
       '@types/react':
         specifier: ^19.2.0
@@ -76,10 +76,10 @@ importers:
         specifier: ^9.17.0
         version: 9.37.0(jiti@2.6.1)
       eslint-config-prettier:
-        specifier: ^10.0.1
+        specifier: ^10.0.0
         version: 10.1.8(eslint@9.37.0(jiti@2.6.1))
       eslint-plugin-react:
-        specifier: ^7.37.3
+        specifier: ^7.37.0
         version: 7.37.5(eslint@9.37.0(jiti@2.6.1))
       eslint-plugin-react-hooks:
         specifier: ^7.0.0
@@ -88,10 +88,10 @@ importers:
         specifier: ^15.14.0
         version: 15.15.0
       prettier:
-        specifier: ^3.4.2
+        specifier: ^3.4.0
         version: 3.6.2
       prettier-plugin-tailwindcss:
-        specifier: ^0.6.11
+        specifier: ^0.6.0
         version: 0.6.14(prettier-plugin-organize-imports@4.3.0(prettier@3.6.2)(typescript@5.9.3))(prettier@3.6.2)
       tailwindcss:
         specifier: ^4.0.0
