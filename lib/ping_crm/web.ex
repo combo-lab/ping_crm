@@ -19,8 +19,6 @@ defmodule PingCRM.Web do
     apply(__MODULE__, which, [])
   end
 
-  def static_paths, do: ~w(robots.txt favicon.ico favicon.svg build uploads)
-
   def router do
     quote do
       use Combo.Router
@@ -52,13 +50,14 @@ defmodule PingCRM.Web do
 
       import PingCRM.Web.Serializer, only: [serialize: 2]
 
-      unquote(verified_routes())
+      unquote(route_helpers())
     end
   end
 
   def component do
     quote do
       unquote(html_helpers())
+      unquote(route_helpers())
     end
   end
 
@@ -72,6 +71,7 @@ defmodule PingCRM.Web do
         ]
 
       unquote(html_helpers())
+      unquote(route_helpers())
     end
   end
 
@@ -82,23 +82,18 @@ defmodule PingCRM.Web do
       import Combo.Inertia.HTML
 
       alias PingCRM.Web.Layouts
+    end
+  end
 
-      unquote(verified_routes())
+  defp route_helpers do
+    quote do
+      alias PingCRM.Web.Router.Helpers, as: Routes
     end
   end
 
   def serializer do
     quote do
       use PingCRM.Web.Serializer
-    end
-  end
-
-  def verified_routes do
-    quote do
-      use Combo.VerifiedRoutes,
-        endpoint: PingCRM.Web.Endpoint,
-        router: PingCRM.Web.Router,
-        statics: PingCRM.Web.static_paths()
     end
   end
 end

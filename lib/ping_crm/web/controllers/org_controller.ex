@@ -33,7 +33,7 @@ defmodule PingCRM.Web.OrgController do
       {:ok, _org} ->
         conn
         |> put_flash(:success, "Organization created.")
-        |> redirect(to: ~p"/orgs")
+        |> redirect(to: Routes.org_path(conn, :index))
 
       {:error, changeset} ->
         conn

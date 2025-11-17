@@ -4,7 +4,7 @@ defmodule PingCRM.Web.Endpoint do
   plug Plug.Static,
     at: "/",
     from: {:ping_crm, "priv/static"},
-    only: PingCRM.Web.static_paths(),
+    only: ~w(robots.txt favicon.ico favicon.svg build uploads),
     raise_on_missing_only: PingCRM.Env.dev?()
 
   if live_reloading? do

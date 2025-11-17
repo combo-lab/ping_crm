@@ -19,7 +19,7 @@ defmodule PingCRM.Web.ConnCase do
       # The default endpoint for testing
       @endpoint PingCRM.Web.Endpoint
 
-      use PingCRM.Web, :verified_routes
+      alias PingCRM.Web.Router.Helpers, as: Routes
 
       # Import conveniences for testing with connections
       import Plug.Conn

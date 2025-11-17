@@ -1,8 +1,8 @@
 defmodule PingCRM.Web.UserAuth do
-  use PingCRM.Web, :verified_routes
   import Plug.Conn
   import Combo.Conn
   alias PingCRM.Core.Accounts
+  alias PingCRM.Web.Router.Helpers, as: Routes
 
   # The rotation of user session tokens.
   #
@@ -36,7 +36,7 @@ defmodule PingCRM.Web.UserAuth do
   def log_out_user(conn) do
     conn
     |> delete_user_session()
-    |> redirect(to: ~p"/")
+    |> redirect(to: Routes.user_session_path(conn, :show))
   end
 
   @doc """
@@ -68,7 +68,7 @@ defmodule PingCRM.Web.UserAuth do
       conn
       |> put_flash(:error, "You must log in to access this page.")
       |> maybe_put_user_return_to()
-      |> redirect(to: ~p"/login")
+      |> redirect(to: Routes.user_session_path(conn, :show))
       |> halt()
     end
   end
@@ -161,5 +161,5 @@ defmodule PingCRM.Web.UserAuth do
   defp put_user_return_to(conn, path), do: put_session(conn, :user_return_to, path)
   defp get_user_return_to(conn), do: get_session(conn, :user_return_to)
 
-  defp signed_in_path(_conn), do: ~p"/"
+  defp signed_in_path(conn), do: Routes.dashboard_path(conn, :show)
 end

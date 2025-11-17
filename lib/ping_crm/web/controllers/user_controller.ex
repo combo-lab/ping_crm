@@ -44,7 +44,7 @@ defmodule PingCRM.Web.UserController do
 
         conn
         |> put_flash(:success, "User created.")
-        |> redirect(to: ~p"/users")
+        |> redirect(to: Routes.user_path(conn, :index))
 
       {:error, changeset} ->
         conn

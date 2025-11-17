@@ -43,7 +43,7 @@ defmodule PingCRM.Web.ContactController do
       {:ok, _contact} ->
         conn
         |> put_flash(:success, "Contact created.")
-        |> redirect(to: ~p"/contacts")
+        |> redirect(to: Routes.contact_path(conn, :index))
 
       {:error, changeset} ->
         conn
