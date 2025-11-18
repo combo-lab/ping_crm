@@ -161,5 +161,5 @@ defmodule PingCRM.Web.UserAuth do
   defp put_user_return_to(conn, path), do: put_session(conn, :user_return_to, path)
   defp get_user_return_to(conn), do: get_session(conn, :user_return_to)
 
-  defp signed_in_path(conn), do: Routes.dashboard_path(conn, :show)
+  defp signed_in_path(conn), do: Routes.dashboard_path(conn, :index)
 end
