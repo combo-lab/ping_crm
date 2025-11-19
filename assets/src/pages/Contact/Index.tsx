@@ -1,5 +1,6 @@
 import { ContactCompact, PaginationMeta } from "@/types"
 
+import { contact_path } from "@/routes"
 import { Link } from "@inertiajs/react"
 import MainLayout from "@/layouts/MainLayout"
 import SearchBar from "@/components/SearchBar"
@@ -18,7 +19,7 @@ function Index({ contacts, pagination_meta }: Props) {
       <h1 className="mb-8 text-3xl font-bold">Contacts</h1>
       <div className="mb-6 flex items-center justify-between">
         <SearchBar filters={["status"]} />
-        <Link className="btn focus:outline-none" href="/contacts/new">
+        <Link className="btn focus:outline-none" href={contact_path(":new")}>
           <span>Create</span>
           <span className="hidden md:inline"> Contact</span>
         </Link>
@@ -40,7 +41,7 @@ function Index({ contacts, pagination_meta }: Props) {
           { label: "Phone", name: "phone", colSpan: 2 },
         ]}
         rows={contacts}
-        getRowDetailsUrl={(row) => `/contacts/${row.id}/edit`}
+        getRowDetailsUrl={(row) => contact_path(":edit", row.id)}
       />
       <Pagination {...pagination_meta} />
     </div>

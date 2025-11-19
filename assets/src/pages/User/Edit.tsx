@@ -1,5 +1,6 @@
 import { UserEdit, UserRole } from "@/types"
 
+import { user_path } from "@/routes"
 import { Head, Link, useForm, router } from "@inertiajs/react"
 import MainLayout from "@/layouts/MainLayout"
 import FieldGroup from "@/components/form/FieldGroup"
@@ -16,7 +17,6 @@ interface Props {
 
 function Edit({ user }: Props) {
   const form = useForm({
-    _method: "put",
     first_name: user.first_name || "",
     last_name: user.last_name || "",
     email: user.email || "",
@@ -27,7 +27,7 @@ function Edit({ user }: Props) {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    form.submit("post", `/users/${user.id}`, {
+    form.submit("put", user_path(":update", user.id), {
       onSuccess: () => {
         form.reset("photo")
       },
@@ -36,13 +36,13 @@ function Edit({ user }: Props) {
 
   function delete_() {
     if (confirm("Are you sure you want to delete this user?")) {
-      router.delete(`/users/${user.id}`)
+      router.delete(user_path(":delete", user.id))
     }
   }
 
   function restore() {
     if (confirm("Are you sure you want to restore this user?")) {
-      router.put(`/users/${user.id}/restore`)
+      router.put(user_path(":restore", user.id))
     }
   }
 
@@ -51,7 +51,7 @@ function Edit({ user }: Props) {
       <Head title={user.full_name} />
       <div className="mb-8 flex max-w-lg justify-start">
         <h1 className="text-3xl font-bold">
-          <Link href="/users" className="text-indigo-600 hover:text-indigo-700">
+          <Link href={user_path(":index")} className="text-indigo-600 hover:text-indigo-700">
             Users
           </Link>{" "}
           <span className="font-medium text-indigo-600">/</span> {user.full_name}

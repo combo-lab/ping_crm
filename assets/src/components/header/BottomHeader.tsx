@@ -1,5 +1,6 @@
 import { PageProps } from "@/types"
 
+import { profile_path, user_session_path, user_path } from "@/routes"
 import { useState } from "react"
 import { usePage, Link } from "@inertiajs/react"
 import { ChevronDown } from "lucide-react"
@@ -25,14 +26,14 @@ export default function BottomHeader() {
         <div className={menuOpened ? "" : "hidden"}>
           <div className="absolute top-0 right-0 left-auto z-20 mt-8 rounded bg-white py-2 text-sm whitespace-nowrap shadow-xl">
             <Link
-              href="/profile"
+              href={profile_path(":edit")}
               className="block px-6 py-2 hover:bg-indigo-600 hover:text-white"
               onClick={() => setMenuOpened(false)}
             >
               Profile
             </Link>
             <Link
-              href="/users"
+              href={user_path(":index")}
               className="block px-6 py-2 hover:bg-indigo-600 hover:text-white"
               onClick={() => setMenuOpened(false)}
             >
@@ -40,8 +41,8 @@ export default function BottomHeader() {
             </Link>
             <Link
               as="button"
-              href="/logout"
               method="delete"
+              href={user_session_path(":delete")}
               className="block w-full px-6 py-2 text-left hover:bg-indigo-600 hover:text-white focus:outline-none"
             >
               Logout

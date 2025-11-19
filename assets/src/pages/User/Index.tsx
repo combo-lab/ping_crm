@@ -1,5 +1,6 @@
 import { UserCompact, PaginationMeta } from "@/types"
 
+import { user_path } from "@/routes"
 import { Link } from "@inertiajs/react"
 import MainLayout from "@/layouts/MainLayout"
 import SearchBar from "@/components/SearchBar"
@@ -18,7 +19,7 @@ function Index({ users, pagination_meta }: Props) {
       <h1 className="mb-8 text-3xl font-bold">Users</h1>
       <div className="mb-6 flex items-center justify-between">
         <SearchBar filters={["role", "status"]} />
-        <Link className="btn focus:outline-none" href="/users/new">
+        <Link className="btn focus:outline-none" href={user_path(":new")}>
           <span>Create</span>
           <span className="hidden md:inline"> User</span>
         </Link>
@@ -54,7 +55,7 @@ function Index({ users, pagination_meta }: Props) {
           },
         ]}
         rows={users}
-        getRowDetailsUrl={(row) => `/users/${row.id}/edit`}
+        getRowDetailsUrl={(row) => user_path(":edit", row.id)}
       />
       <Pagination {...pagination_meta} />
     </div>

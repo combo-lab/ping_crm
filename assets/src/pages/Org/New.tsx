@@ -1,3 +1,4 @@
+import { org_path } from "@/routes"
 import { Link, useForm } from "@inertiajs/react"
 import MainLayout from "@/layouts/MainLayout"
 import FieldGroup from "@/components/form/FieldGroup"
@@ -19,13 +20,13 @@ function New() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    form.submit("post", "/orgs")
+    form.submit("post", org_path(":create"))
   }
 
   return (
     <div>
       <h1 className="mb-8 text-3xl font-bold">
-        <Link href="/orgs" className="text-indigo-600 hover:text-indigo-700">
+        <Link href={org_path(":index")} className="text-indigo-600 hover:text-indigo-700">
           Organizations
         </Link>{" "}
         <span className="font-medium text-indigo-600">/</span> Create

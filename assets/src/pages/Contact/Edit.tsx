@@ -1,5 +1,6 @@
 import { ContactEdit, OrgName } from "@/types"
 
+import { contact_path } from "@/routes"
 import { Head, Link, useForm, router } from "@inertiajs/react"
 import MainLayout from "@/layouts/MainLayout"
 import FieldGroup from "@/components/form/FieldGroup"
@@ -32,18 +33,18 @@ function Edit({ contact, org_names }: Props) {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    form.submit("put", `/contacts/${contact.id}`)
+    form.submit("put", contact_path(":update", contact.id))
   }
 
   function destroy() {
     if (confirm("Are you sure you want to delete this contact?")) {
-      router.delete(`/contacts/${contact.id}`)
+      router.delete(contact_path(":delete", contact.id))
     }
   }
 
   function restore() {
     if (confirm("Are you sure you want to restore this contact?")) {
-      router.put(`/contacts/${contact.id}/restore`)
+      router.put(contact_path(":restore", contact.id))
     }
   }
 
@@ -51,7 +52,7 @@ function Edit({ contact, org_names }: Props) {
     <div>
       <Head title={contact.full_name} />
       <h1 className="mb-8 text-3xl font-bold">
-        <Link href="/contacts" className="text-indigo-600 hover:text-indigo-700">
+        <Link href={contact_path(":index")} className="text-indigo-600 hover:text-indigo-700">
           Contacts
         </Link>{" "}
         <span className="mx-2 font-medium text-indigo-600">/</span>

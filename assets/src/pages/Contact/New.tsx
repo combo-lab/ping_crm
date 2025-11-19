@@ -1,5 +1,6 @@
 import { OrgName } from "@/types"
 
+import { contact_path } from "@/routes"
 import { useForm, Link } from "@inertiajs/react"
 import MainLayout from "@/layouts/MainLayout"
 import FieldGroup from "@/components/form/FieldGroup"
@@ -27,13 +28,13 @@ function New({ org_names }: Props) {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    form.submit("post", "/contacts")
+    form.submit("post", contact_path(":create"))
   }
 
   return (
     <div>
       <h1 className="mb-8 text-3xl font-bold">
-        <Link href="/contacts" className="text-indigo-600 hover:text-indigo-700">
+        <Link href={contact_path(":index")} className="text-indigo-600 hover:text-indigo-700">
           Contacts
         </Link>{" "}
         <span className="font-medium text-indigo-600">/</span> Create

@@ -1,5 +1,6 @@
 import { OrgEdit } from "@/types"
 
+import { org_path, contact_path } from "@/routes"
 import { Head, Link, useForm, router } from "@inertiajs/react"
 import MainLayout from "@/layouts/MainLayout"
 import FieldGroup from "@/components/form/FieldGroup"
@@ -28,18 +29,18 @@ function Edit({ org }: Props) {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    form.submit("put", `/orgs/${org.id}`)
+    form.submit("put", org_path(":update", org.id))
   }
 
   function delete_() {
     if (confirm("Are you sure you want to delete this organization?")) {
-      router.delete(`/orgs/${org.id}`)
+      router.delete(org_path(":delete", org.id))
     }
   }
 
   function restore() {
     if (confirm("Are you sure you want to restore this organization?")) {
-      router.put(`/orgs/${org.id}/restore`)
+      router.put(org_path(":restore", org.id))
     }
   }
 
@@ -47,7 +48,7 @@ function Edit({ org }: Props) {
     <div>
       <Head title={org.name} />
       <h1 className="mb-8 text-3xl font-bold">
-        <Link href="/orgs" className="text-indigo-600 hover:text-indigo-700">
+        <Link href={org_path(":index")} className="text-indigo-600 hover:text-indigo-700">
           Organizations
         </Link>{" "}
         <span className="font-medium text-indigo-600">/</span> {org.name}
@@ -163,7 +164,7 @@ function Edit({ org }: Props) {
           { label: "Phone", name: "phone", colSpan: 2 },
         ]}
         rows={org.contacts.data!}
-        getRowDetailsUrl={(row) => `/contacts/${row.id}/edit`}
+        getRowDetailsUrl={(row) => contact_path(":edit", row.id)}
       />
     </div>
   )

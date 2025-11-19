@@ -1,5 +1,6 @@
 import { OrgCompact, PaginationMeta } from "@/types"
 
+import { org_path } from "@/routes"
 import { Link } from "@inertiajs/react"
 import MainLayout from "@/layouts/MainLayout"
 import SearchBar from "@/components/SearchBar"
@@ -18,7 +19,7 @@ function Index({ orgs, pagination_meta }: Props) {
       <h1 className="mb-8 text-3xl font-bold">Organizations</h1>
       <div className="mb-6 flex items-center justify-between">
         <SearchBar filters={["status"]} />
-        <Link className="btn focus:outline-none" href="/orgs/new">
+        <Link className="btn focus:outline-none" href={org_path(":new")}>
           <span>Create</span>
           <span className="hidden md:inline"> Organization</span>
         </Link>
@@ -39,7 +40,7 @@ function Index({ orgs, pagination_meta }: Props) {
           { label: "Phone", name: "phone", colSpan: 2 },
         ]}
         rows={orgs}
-        getRowDetailsUrl={(row) => `/orgs/${row.id}/edit`}
+        getRowDetailsUrl={(row) => org_path(":edit", row.id)}
       />
       <Pagination {...pagination_meta} />
     </div>

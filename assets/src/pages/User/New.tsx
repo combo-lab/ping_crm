@@ -1,3 +1,4 @@
+import { user_path } from "@/routes"
 import { Link, useForm } from "@inertiajs/react"
 import MainLayout from "@/layouts/MainLayout"
 import FieldGroup from "@/components/form/FieldGroup"
@@ -18,14 +19,14 @@ function New() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    form.submit("post", "/users")
+    form.submit("post", user_path(":create"))
   }
 
   return (
     <div>
       <div>
         <h1 className="mb-8 text-3xl font-bold">
-          <Link href="/users" className="text-indigo-600 hover:text-indigo-700">
+          <Link href={user_path(":index")} className="text-indigo-600 hover:text-indigo-700">
             Users
           </Link>{" "}
           <span className="font-medium text-indigo-600">/</span> Create

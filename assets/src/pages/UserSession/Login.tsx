@@ -1,3 +1,4 @@
+import { user_session_path } from "@/routes"
 import { Head, useForm } from "@inertiajs/react"
 import Logo from "@/components/Logo"
 import FieldGroup from "@/components/form/FieldGroup"
@@ -12,7 +13,7 @@ export default function LoginPage() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    form.submit("post", "/login")
+    form.submit("post", user_session_path(":create"))
   }
 
   return (

@@ -1,5 +1,6 @@
 import { UserEdit, UserRole } from "@/types"
 
+import { profile_path } from "@/routes"
 import { useForm } from "@inertiajs/react"
 import MainLayout from "@/layouts/MainLayout"
 import FieldGroup from "@/components/form/FieldGroup"
@@ -16,7 +17,6 @@ const title = "Profile"
 
 function Edit({ user }: Props) {
   const form = useForm({
-    _method: "put",
     first_name: user.first_name || "",
     last_name: user.last_name || "",
     email: user.email || "",
@@ -27,7 +27,7 @@ function Edit({ user }: Props) {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    form.submit("post", "/profile")
+    form.submit("put", profile_path(":update"))
   }
 
   return (

@@ -1,3 +1,4 @@
+import { dashboard_path } from "@/routes"
 import { useState } from "react"
 import { Link } from "@inertiajs/react"
 import Logo from "@/components/Logo"
@@ -8,7 +9,7 @@ export default () => {
   const [menuOpened, setMenuOpened] = useState(false)
   return (
     <div className="flex items-center justify-between bg-indigo-900 px-6 py-4 md:w-56 md:flex-shrink-0 md:justify-center">
-      <Link className="mt-1" href="/">
+      <Link className="mt-1" href={dashboard_path(":index")}>
         <Logo className="fill-current text-white" width="120" height="28" />
       </Link>
       <div className="relative md:hidden">
