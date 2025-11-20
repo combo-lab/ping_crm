@@ -104,7 +104,7 @@ export function user_path(action: string, ...args: any[]): string {
       return user_path_create(...args)
 
     case ":edit":
-      return user_path_edit(args[0], args[1])
+      return user_path_edit(...(args as [PathParam, Params?]))
 
     case ":update":
       return user_path_update(...(args as [PathParam, Params?]))
@@ -169,7 +169,7 @@ export function org_path(action: string, ...args: any[]): string {
       return org_path_create(...args)
 
     case ":edit":
-      return org_path_edit(args[0], args[1])
+      return org_path_edit(...(args as [PathParam, Params?]))
 
     case ":update":
       return org_path_update(...(args as [PathParam, Params?]))
@@ -234,7 +234,7 @@ export function contact_path(action: string, ...args: any[]): string {
       return contact_path_create(...args)
 
     case ":edit":
-      return contact_path_edit(args[0], args[1])
+      return contact_path_edit(...(args as [PathParam, Params?]))
 
     case ":update":
       return contact_path_update(...(args as [PathParam, Params?]))
